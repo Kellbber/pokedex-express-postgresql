@@ -1,0 +1,442 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  scroll-behavior: smooth;
+  outline: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url("/img/img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow-x: hidden;
+}
+nav {
+  height: 10rem;
+  background-image: url("/img/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+nav ul {
+  float: right;
+  margin-right: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+nav ul li { 
+  display: inline-block;
+  float: left;
+}
+nav ul li:not(:first-child) {
+  margin-left: 25px;
+}
+nav ul li a {
+  display: inline-block;
+  outline: none;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+nav ul li a:hover {
+  transform: scale(1.1);
+  text-shadow:  0 0 3px white;
+  text-decoration: none;
+}
+@media screen and (max-width: 560px) {
+  .nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: #161414;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+  .nav-container ul {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+  .nav-container ul li {
+    display: block;
+    float: none;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  .nav-container ul li:nth-child(1) a {
+    transition-delay: 0.2s;
+  }
+  .nav-container ul li:nth-child(2) a {
+    transition-delay: 0.3s;
+  }
+  .nav-container ul li:nth-child(3) a {
+    transition-delay: 0.4s;
+  }
+  .nav-container ul li:nth-child(4) a {
+    transition-delay: 0.5s;
+  }
+  .nav-container ul li:not(:first-child) {
+    margin-left: 0;
+  }
+  .nav-container ul li a {
+    padding: 10px 25px;
+    opacity: 0;
+    color: rgb(253, 253, 253);
+    font-size: 24px;
+    font-weight: 600;
+    transform: translateY(-20px);
+    transition: all 0.2s ease;
+  }
+  .nav-open {
+    position: fixed;
+    background-color: black;
+    right: 10px;
+    top: 10px;
+    display: block;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+  }
+  .nav-open i {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #f10101;
+    border-radius: 2px;
+    margin-left: 14px;
+  }
+  .nav-open i:nth-child(1) {
+    margin-top: 16px;
+  }
+  .nav-open i:nth-child(2) {
+    margin-top: 4px;
+    opacity: 1;
+  }
+  .nav-open i:nth-child(3) {
+    margin-top: 4px;
+  }
+}
+#nav:checked + .nav-open {
+  transform: rotate(45deg);
+}
+#nav:checked + .nav-open i {
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+#nav:checked + .nav-open i:nth-child(1) {
+  transform: translateY(6px) rotate(180deg);
+}
+#nav:checked + .nav-open i:nth-child(2) {
+  opacity: 0;
+}
+#nav:checked + .nav-open i:nth-child(3) {
+  transform: translateY(-6px) rotate(90deg);
+}
+#nav:checked ~ .nav-container {
+  z-index: 9990;
+  opacity: 1;
+}
+#nav:checked ~ .nav-container ul li a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hidden {
+  display: none;
+}
+main {
+  width: 100%;
+  display: flex;
+  padding: 5% 10% 10% 10%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+main h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+.cards h1 {
+  width: 100%;
+  font-size: 3rem;
+  padding-top: 2rem;
+}
+.cards {
+  display: flex;
+  background-color: rgba(61, 53, 53, 0.877);
+  border-radius: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.966);
+  border-radius: 5%;
+  width: 250px;
+  height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: 0.5s ease-in-out;
+  margin: 30px;
+}
+.card2 {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  color: black;
+}
+.card2:hover {
+  transform: scale(1.1);
+}
+.card h2 {
+  text-align: center;
+}
+.card p {
+  text-align: center;
+  font-size: 0.8rem;
+}
+.card img {
+  align-items: center;
+  width: 200px;
+}
+.cardTexto {
+  width: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: white;
+  margin: 1rem;
+}
+.cardTexto h2 {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.cards .card .descricao {
+  padding: 0.5rem;
+}
+#editar {
+  text-decoration: none;
+  color: rgb(251, 251, 251);
+  background-color: #1e813e;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 50%;
+  text-align: center;
+  margin-top: 1rem;
+  padding: .2rem;
+  border: solid 3px #1e813e;
+}
+#editar:hover {
+  background-color: rgb(255, 255, 255);
+  color: #1e813e;
+  font-size: 1rem;
+  font-weight: 600;
+  border: solid 3px #1e813e;
+}
+#deletar {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: #99211E;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 50%;
+  text-align: center;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+  padding: .2rem;
+  border: solid 3px #99211E;
+}
+#deletar:hover {
+  background-color: rgb(253, 253, 253);
+  color: #99211E;
+  font-size: 1rem;
+  font-weight: 600;
+  border: solid 3px #99211E;
+}
+#cadastro {
+  display: flex;
+  background-color: rgba(61, 53, 53, 0.877);
+  border-radius: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+#cadastro h2 {
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+}
+#cadastro img {
+  display: flex;
+  width: 50%;
+}
+
+form {
+  width: 100%;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  flex-direction: column;
+}
+form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+}
+
+form label {
+  padding: 0.2rem;
+  color: #fff;
+}
+.botaoCadastro {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.btnCadastrar {
+  width: 50%;
+  text-decoration: none;
+  border: 2px solid #1e813e;
+  background-color: white;
+  color: #1e813e;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.btnCadastrar:hover {
+  border: 2px solid white;
+  background-color: #1e813e;
+  color: white;
+}
+footer {
+  width: 100%;
+  display: flex;
+  background-color: #080808a6;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  padding: .5rem 0 .5rem 0;
+}
+footer a{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+}
+footer a:hover{
+  color: white;
+}
+footer p{
+  text-align: center;
+}
+#scarletViolet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #181818a6;
+  border-radius: 10px;
+  padding: 2rem 3rem 3rem 2rem;
+}
+#tituloCuriosidade {
+  font-size: 2rem;
+  text-align: center;
+  padding: 3rem 0 1rem 0;
+  width: 100%;
+  background-color: #ffffff77;
+  color: #080808;
+  text-shadow: 0 0 6px #FF0000, 0 0 7px #0000FF;
+}
+.texto1 {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+}
+#video {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#video iframe {
+  width: 60%;
+}
+.imgCuriosidade img {
+  width: 75%;
+  padding-bottom: 0.5rem;
+}
+.imgCuriosidade {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imgCuriosidade figcaption {
+  text-align: center;
+  color: #fff;
+}
+section#message {
+  padding: 1.4rem;
+  background-color: rgb(0, 0, 0);
+  color: #ebebeb;
+  position: fixed;
+  top: 9rem;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+span#close {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: .3s;
+}
+span#close:hover{
+  color: #ebebeb;
+  transform: scale(1.5);
+}
+.cadastroNumero{
+  margin-bottom: .2rem;
+  color: rgb(105, 105, 105);
+}
+.cardTipo{
+  margin-top: .2rem;
+  color: #474747;
+}
