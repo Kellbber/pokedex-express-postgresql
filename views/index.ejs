@@ -20,27 +20,16 @@
         </ul>
       </div>
     </nav>
-    <% if(message != "") {  %>
-      <section id="message">
-          <p><%= message %></p> <span id="close">&times;</span>
-      </section>
-  <% }  %>
-    <main>
-      <section class="cards">
-        <h1>Pokédex</h1>
-        <% pokedex.forEach((pokemon) =>{ %>
-        <div class="card">
-          <a class="card2" href="/detalhes/<%= pokedex.indexOf(pokemon) %>">
-            <img src="<%= pokemon.imagem %>" alt="pokemon" />
-            <h3 class="cadastroNumero">nº <%= pokemon.numero %></h3>
-            <h2><%= pokemon.nome %></h2>
-            <h3 class="cardTipo"><%= pokemon.tipo %></h3>
 
-            <a id="editar" href="/cadastro/<%= pokemon.id %>">Editar</a>
-            <a id="deletar" href="/deletar/<%= pokedex.indexOf(pokemon) %>"
-              >Deletar</a
-            >
-          </a>
+    <main>
+      <section class="items">
+        <h1>Loja dos Peaky`s</h1>
+        <% loja.forEach((items) =>{ %>
+        <div class="item">
+          <a class="item2" href="/detalhes/<%= loja.indexOf(items) %>">
+            <img src="<%= items.imagem %>" alt="item" />
+            <h2><%= items.nome %></h2>
+            <h3 class="itemTipo"><%= items.tamanho %></h3>
         </div>
         <% }) %>
       </section>
